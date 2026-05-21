@@ -3,9 +3,9 @@
 
 #include <Arduino.h>
 #include "../display/display_manager.h"
+#include "../relay/relay.h"
+#include "../voice/voice_manager.h"
 
-#define CMD_OPEN   "DOOR_OPEN"
-#define CMD_CLOSE  "DOOR_CLOSE"
 
 enum State {
     IDLE,

@@ -10,12 +10,15 @@
 #include "touch/touch_manager.h"
 #include "system/states.h"
 #include "config/PIN.h"
+#include "relay/relay.h"
+#include "voice/voice_manager.h"
 
 void setup() 
 {
     Serial.begin(115200);
-    Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
+    initVoiceManager();
 
+    Relay_Init();
     initDisplay();
     initTouch();
     drawIdleScreen();

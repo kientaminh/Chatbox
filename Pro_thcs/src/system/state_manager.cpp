@@ -40,8 +40,8 @@ void updateListeningState()
     */
     if(command == CMD_OPEN)
     {
-        Serial2.println("vui lòng nhập mật khẩu");
-
+        voiceUART.println(CMD_MK);
+        delay(5000);
         enterPasswordState();
 
         return;
@@ -52,10 +52,9 @@ void updateListeningState()
     */
     if(command == CMD_CLOSE)
     {
-        Serial2.println("dạ, đã đóng cửa");
-
-        // relay OFF
-        // relayOff();
+        voiceUART.println(CMD_CLOSED);
+        delay(5000);
+        closeDoor();
 
         currentState = IDLE;
 
@@ -67,7 +66,7 @@ void updateListeningState()
     /*
         timeout 5s
     */
-    if(millis() - listeningStartTime > 5000)
+    if(millis() - listeningStartTime > 30000)
     {
         currentState = IDLE;
 
@@ -95,7 +94,7 @@ void updatePasswordState()
     {
         if(inputPassword == "1234")
         {
-            // relayOn();
+            openDoor();
             enterSuccessState();
         }
         else
