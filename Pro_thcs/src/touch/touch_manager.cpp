@@ -1,5 +1,8 @@
 #include "touch_manager.h"
 
+
+#define TOUCH_CS 15
+
 XPT2046_Touchscreen touch(TOUCH_CS);
 
 /*
